@@ -1,14 +1,16 @@
 import {
   Collection,
   Entity,
+  ManyToOne,
   OneToMany,
   PrimaryKey,
   Property,
 } from '@mikro-orm/core';
 import { ApplicationEnvironment } from 'src/application-environment/entities/application-environment.entity';
+import { Integration } from 'src/integration/entities/integration.entity';
 
 @Entity()
-export class Application {
+export class ApplicationDeployment {
   @PrimaryKey({ autoincrement: true })
   id: number;
 
@@ -18,11 +20,11 @@ export class Application {
   @Property()
   description: string;
 
-  @Property()
-  client_id: string;
+  @ManyToOne(() => ApplicationEnvironment)
+  applicationEnvironment: ApplicationEnvironment;
 
-  @OneToMany(() => ApplicationEnvironment, (a) => a.application, {
+  @OneToMany(() => Integration, (i) => i.applicationDeployment, {
     eager: true,
   })
-  applicationsEnvironment = new Collection<ApplicationEnvironment>(this);
+  integration = new Collection<Integration>(this);
 }

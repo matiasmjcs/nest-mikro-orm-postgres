@@ -18,9 +18,6 @@ import { Application } from 'src/application/entities/application.entity';
       logger: logger.log.bind(logger),
       persistOnCreate: true,
     }),
-    MikroOrmModule.forFeature({
-      entities: [Application],
-    }),
   ],
   exports: [MikroOrmModule],
 })

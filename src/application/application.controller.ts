@@ -28,20 +28,20 @@ export class ApplicationController {
   }
   @HttpCode(200)
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.applicationService.findOne(id);
+  findOne(@Param('id') id: number) {
+    return this.applicationService.findOne(+id);
   }
   @HttpCode(200)
   @Patch(':id')
   update(
-    @Param('id') id: string,
+    @Param('id') id: number,
     @Body() updateApplicationDto: UpdateApplicationDto,
   ) {
-    return this.applicationService.update(id, updateApplicationDto);
+    return this.applicationService.update(+id, updateApplicationDto);
   }
   @HttpCode(200)
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.applicationService.remove(id);
+  remove(@Param('id') id: number) {
+    return this.applicationService.remove(+id);
   }
 }

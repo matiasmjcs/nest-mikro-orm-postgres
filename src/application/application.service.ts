@@ -32,7 +32,7 @@ export class ApplicationService {
     }
   }
 
-  async findOne(id: string) {
+  async findOne(id: number) {
     try {
       return await this.appRepository.findOne(id);
     } catch (error) {
@@ -40,7 +40,7 @@ export class ApplicationService {
     }
   }
 
-  update(id: string, updateApplicationDto: UpdateApplicationDto) {
+  update(id: number, updateApplicationDto: UpdateApplicationDto) {
     try {
       this.appRepository.nativeUpdate(id, {
         description: updateApplicationDto.description,
@@ -53,7 +53,7 @@ export class ApplicationService {
     }
   }
 
-  async remove(id: string) {
+  async remove(id: number) {
     try {
       return await this.em.getRepository(Application).nativeDelete(id);
     } catch (error) {
