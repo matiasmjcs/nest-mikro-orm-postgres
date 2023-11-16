@@ -12,7 +12,6 @@ export class ApplicationService {
     private readonly appRepository: EntityRepository<Application>,
     private readonly em: EntityManager,
   ) {}
-
   async create(createApplicationDto: CreateApplicationDto) {
     try {
       const create = this.appRepository.create(createApplicationDto);
